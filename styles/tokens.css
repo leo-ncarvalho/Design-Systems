@@ -1,0 +1,351 @@
+/* ==========================================================================
+   Design tokens — Material Design 3 roles, minimal expression.
+   Naming follows --md-sys-* so @material/web components pick them up.
+   Light is the default; dark applies via [data-theme="dark"] or, when no
+   explicit choice was made, via prefers-color-scheme.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* ---- Color roles: light ------------------------------------------------ */
+  --md-sys-color-background: #fbfbfc;
+  --md-sys-color-on-background: #111113;
+  --md-sys-color-surface: #fbfbfc;
+  --md-sys-color-surface-dim: #e9e9ed;
+  --md-sys-color-surface-bright: #fbfbfc;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f6f6f8;
+  --md-sys-color-surface-container: #f1f1f4;
+  --md-sys-color-surface-container-high: #ebebef;
+  --md-sys-color-surface-container-highest: #e5e5ea;
+  --md-sys-color-on-surface: #111113;
+  --md-sys-color-on-surface-variant: #595c63;
+  --md-sys-color-surface-variant: #e8e9ed;
+  --md-sys-color-surface-tint: #111113;
+  --md-sys-color-outline: #868991;
+  --md-sys-color-outline-variant: #e1e2e7;
+
+  --md-sys-color-primary: #111113;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #ececf0;
+  --md-sys-color-on-primary-container: #111113;
+
+  --md-sys-color-secondary: #3a3d44;
+  --md-sys-color-on-secondary: #ffffff;
+  --md-sys-color-secondary-container: #ebedf2;
+  --md-sys-color-on-secondary-container: #1b1d22;
+
+  /* Tertiary is the single accent: focus, links, progress, selection. */
+  --md-sys-color-tertiary: #3454d1;
+  --md-sys-color-on-tertiary: #ffffff;
+  --md-sys-color-tertiary-container: #e5eaff;
+  --md-sys-color-on-tertiary-container: #1a2a78;
+
+  --md-sys-color-error: #b3261e;
+  --md-sys-color-on-error: #ffffff;
+  --md-sys-color-error-container: #fce9e7;
+  --md-sys-color-on-error-container: #5c0f0a;
+
+  /* Extended roles (not in the M3 baseline, same structure). */
+  --ds-color-success: #1b7a49;
+  --ds-color-on-success: #ffffff;
+  --ds-color-success-container: #e2f4ea;
+  --ds-color-on-success-container: #0b3b22;
+  --ds-color-warning: #8a5a00;
+  --ds-color-on-warning: #ffffff;
+  --ds-color-warning-container: #fbefd5;
+  --ds-color-on-warning-container: #3f2900;
+
+  --md-sys-color-inverse-surface: #1c1c1f;
+  --md-sys-color-inverse-on-surface: #f2f2f4;
+  --md-sys-color-inverse-primary: #e6e6ea;
+  --md-sys-color-scrim: #000000;
+  --md-sys-color-shadow: #000000;
+
+  /* Toast icons sit on inverse-surface, so they use the opposite theme's semantic tones. */
+
+  /* Toasts follow the theme: white card on light, raised tone on dark. */
+  --ds-toast-bg: var(--md-sys-color-surface-container-lowest);
+
+  --ds-focus-ring: var(--md-sys-color-tertiary);
+  --ds-selection: color-mix(in srgb, var(--md-sys-color-tertiary) 22%, transparent);
+  --ds-elev-1: 0 1px 2px rgb(17 17 19 / 0.06), 0 1px 1px rgb(17 17 19 / 0.04);
+  --ds-elev-2: 0 2px 6px rgb(17 17 19 / 0.07), 0 1px 2px rgb(17 17 19 / 0.05);
+  --ds-elev-3: 0 8px 24px rgb(17 17 19 / 0.09), 0 2px 6px rgb(17 17 19 / 0.05);
+  --ds-elev-4: 0 16px 40px rgb(17 17 19 / 0.12), 0 4px 10px rgb(17 17 19 / 0.06);
+
+  /* ---- Shape ------------------------------------------------------------- */
+  --md-sys-shape-corner-none: 0px;
+  --md-sys-shape-corner-extra-small: 8px;
+  --md-sys-shape-corner-small: 12px;
+  --md-sys-shape-corner-medium: 16px;
+  --md-sys-shape-corner-large: 24px;
+  --md-sys-shape-corner-extra-large: 32px;
+  --md-sys-shape-corner-full: 9999px;
+  --ds-field-radius: 16px;
+  --md-menu-container-shape: 20px;
+  --md-checkbox-container-shape: 6px;
+
+  /* ---- Spacing: 4px base ------------------------------------------------- */
+  --ds-space-1: 4px;
+  --ds-space-2: 8px;
+  --ds-space-3: 12px;
+  --ds-space-4: 16px;
+  --ds-space-5: 24px;
+  --ds-space-6: 32px;
+  --ds-space-7: 48px;
+  --ds-space-8: 64px;
+  --ds-space-9: 96px;
+
+  /* ---- Motion ------------------------------------------------------------ */
+  --md-sys-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --md-sys-motion-easing-standard-decelerate: cubic-bezier(0, 0, 0, 1);
+  --md-sys-motion-easing-standard-accelerate: cubic-bezier(0.3, 0, 1, 1);
+  --md-sys-motion-easing-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --md-sys-motion-easing-emphasized-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+  /* Strong ease-out for UI that responds to input: starts fast, feels instant. */
+  --ds-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ds-ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  /* iOS-like drawer curve for sheets and side panels. */
+  --ds-ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --md-sys-motion-duration-short1: 50ms;
+  --md-sys-motion-duration-short2: 100ms;
+  --md-sys-motion-duration-short3: 150ms;
+  --md-sys-motion-duration-short4: 200ms;
+  --md-sys-motion-duration-medium1: 250ms;
+  --md-sys-motion-duration-medium2: 300ms;
+  --md-sys-motion-duration-medium3: 350ms;
+  --md-sys-motion-duration-medium4: 400ms;
+  --md-sys-motion-duration-long1: 450ms;
+  --md-sys-motion-duration-long2: 500ms;
+
+  /* ---- Typography: Geist ------------------------------------------------- */
+  --ds-font-sans: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ds-font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --md-ref-typeface-brand: var(--ds-font-sans);
+  --md-ref-typeface-plain: var(--ds-font-sans);
+  --md-ref-typeface-weight-regular: 400;
+  --md-ref-typeface-weight-medium: 500;
+  --md-ref-typeface-weight-bold: 600;
+
+  /* Scale: font / size / line-height / tracking / weight */
+  --md-sys-typescale-display-large-font: var(--ds-font-sans);
+  --md-sys-typescale-display-large-size: 3.5rem;
+  --md-sys-typescale-display-large-line-height: 3.75rem;
+  --md-sys-typescale-display-large-tracking: -0.03em;
+  --md-sys-typescale-display-large-weight: 500;
+  --md-sys-typescale-display-medium-font: var(--ds-font-sans);
+  --md-sys-typescale-display-medium-size: 2.75rem;
+  --md-sys-typescale-display-medium-line-height: 3rem;
+  --md-sys-typescale-display-medium-tracking: -0.028em;
+  --md-sys-typescale-display-medium-weight: 500;
+  --md-sys-typescale-display-small-font: var(--ds-font-sans);
+  --md-sys-typescale-display-small-size: 2.25rem;
+  --md-sys-typescale-display-small-line-height: 2.5rem;
+  --md-sys-typescale-display-small-tracking: -0.024em;
+  --md-sys-typescale-display-small-weight: 500;
+
+  --md-sys-typescale-headline-large-font: var(--ds-font-sans);
+  --md-sys-typescale-headline-large-size: 2rem;
+  --md-sys-typescale-headline-large-line-height: 2.5rem;
+  --md-sys-typescale-headline-large-tracking: -0.022em;
+  --md-sys-typescale-headline-large-weight: 500;
+  --md-sys-typescale-headline-medium-font: var(--ds-font-sans);
+  --md-sys-typescale-headline-medium-size: 1.75rem;
+  --md-sys-typescale-headline-medium-line-height: 2.25rem;
+  --md-sys-typescale-headline-medium-tracking: -0.02em;
+  --md-sys-typescale-headline-medium-weight: 500;
+  --md-sys-typescale-headline-small-font: var(--ds-font-sans);
+  --md-sys-typescale-headline-small-size: 1.5rem;
+  --md-sys-typescale-headline-small-line-height: 2rem;
+  --md-sys-typescale-headline-small-tracking: -0.016em;
+  --md-sys-typescale-headline-small-weight: 500;
+
+  --md-sys-typescale-title-large-font: var(--ds-font-sans);
+  --md-sys-typescale-title-large-size: 1.375rem;
+  --md-sys-typescale-title-large-line-height: 1.75rem;
+  --md-sys-typescale-title-large-tracking: -0.012em;
+  --md-sys-typescale-title-large-weight: 500;
+  --md-sys-typescale-title-medium-font: var(--ds-font-sans);
+  --md-sys-typescale-title-medium-size: 1rem;
+  --md-sys-typescale-title-medium-line-height: 1.5rem;
+  --md-sys-typescale-title-medium-tracking: -0.006em;
+  --md-sys-typescale-title-medium-weight: 500;
+  --md-sys-typescale-title-small-font: var(--ds-font-sans);
+  --md-sys-typescale-title-small-size: 0.875rem;
+  --md-sys-typescale-title-small-line-height: 1.25rem;
+  --md-sys-typescale-title-small-tracking: -0.004em;
+  --md-sys-typescale-title-small-weight: 500;
+
+  --md-sys-typescale-body-large-font: var(--ds-font-sans);
+  --md-sys-typescale-body-large-size: 1rem;
+  --md-sys-typescale-body-large-line-height: 1.5rem;
+  --md-sys-typescale-body-large-tracking: -0.006em;
+  --md-sys-typescale-body-large-weight: 400;
+  --md-sys-typescale-body-medium-font: var(--ds-font-sans);
+  --md-sys-typescale-body-medium-size: 0.875rem;
+  --md-sys-typescale-body-medium-line-height: 1.25rem;
+  --md-sys-typescale-body-medium-tracking: -0.003em;
+  --md-sys-typescale-body-medium-weight: 400;
+  --md-sys-typescale-body-small-font: var(--ds-font-sans);
+  --md-sys-typescale-body-small-size: 0.8125rem;
+  --md-sys-typescale-body-small-line-height: 1.125rem;
+  --md-sys-typescale-body-small-tracking: 0;
+  --md-sys-typescale-body-small-weight: 400;
+
+  --md-sys-typescale-label-large-font: var(--ds-font-sans);
+  --md-sys-typescale-label-large-size: 0.875rem;
+  --md-sys-typescale-label-large-line-height: 1.25rem;
+  --md-sys-typescale-label-large-tracking: -0.003em;
+  --md-sys-typescale-label-large-weight: 500;
+  --md-sys-typescale-label-medium-font: var(--ds-font-sans);
+  --md-sys-typescale-label-medium-size: 0.75rem;
+  --md-sys-typescale-label-medium-line-height: 1rem;
+  --md-sys-typescale-label-medium-tracking: 0.004em;
+  --md-sys-typescale-label-medium-weight: 500;
+  --md-sys-typescale-label-small-font: var(--ds-font-sans);
+  --md-sys-typescale-label-small-size: 0.75rem;
+  --md-sys-typescale-label-small-line-height: 1rem;
+  --md-sys-typescale-label-small-tracking: 0.01em;
+  --md-sys-typescale-label-small-weight: 500;
+
+  /* ---- Layout ------------------------------------------------------------ */
+  --ds-sidebar-w: 248px;
+  --ds-content-max: 1080px;
+  --ds-gutter: clamp(16px, 4vw, 48px);
+  --ds-target-min: 48px;
+}
+
+/* ---- Color roles: dark -------------------------------------------------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --md-sys-color-background: #0e0e10;
+  --md-sys-color-on-background: #ececef;
+  --md-sys-color-surface: #0e0e10;
+  --md-sys-color-surface-dim: #0b0b0d;
+  --md-sys-color-surface-bright: #26262b;
+  --md-sys-color-surface-container-lowest: #09090b;
+  --md-sys-color-surface-container-low: #131316;
+  --md-sys-color-surface-container: #17171a;
+  --md-sys-color-surface-container-high: #1d1d21;
+  --md-sys-color-surface-container-highest: #232328;
+  --md-sys-color-on-surface: #ececef;
+  --md-sys-color-on-surface-variant: #a1a4ab;
+  --md-sys-color-surface-variant: #26272c;
+  --md-sys-color-surface-tint: #ececef;
+  --md-sys-color-outline: #6e717a;
+  --md-sys-color-outline-variant: #26272c;
+
+  --md-sys-color-primary: #ededf0;
+  --md-sys-color-on-primary: #111113;
+  --md-sys-color-primary-container: #26272c;
+  --md-sys-color-on-primary-container: #ededf0;
+
+  --md-sys-color-secondary: #c6c8ce;
+  --md-sys-color-on-secondary: #1b1d22;
+  --md-sys-color-secondary-container: #25262b;
+  --md-sys-color-on-secondary-container: #e3e3e7;
+
+  --md-sys-color-tertiary: #93a8ff;
+  --md-sys-color-on-tertiary: #0f1b57;
+  --md-sys-color-tertiary-container: #1f2750;
+  --md-sys-color-on-tertiary-container: #dce2ff;
+
+  --md-sys-color-error: #ff8f86;
+  --md-sys-color-on-error: #4a0b07;
+  --md-sys-color-error-container: #3d1512;
+  --md-sys-color-on-error-container: #ffdad6;
+
+  --ds-color-success: #62d392;
+  --ds-color-on-success: #06301a;
+  --ds-color-success-container: #12301f;
+  --ds-color-on-success-container: #c9f2da;
+  --ds-color-warning: #f0b35a;
+  --ds-color-on-warning: #3a2500;
+  --ds-color-warning-container: #3a2a0a;
+  --ds-color-on-warning-container: #fbe3b8;
+
+  --md-sys-color-inverse-surface: #ececef;
+  --md-sys-color-inverse-on-surface: #1c1c1f;
+  --md-sys-color-inverse-primary: #26272c;
+
+  --ds-toast-bg: var(--md-sys-color-surface-container-highest);
+  --ds-elev-1: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 1px rgb(0 0 0 / 0.3);
+  --ds-elev-2: 0 2px 8px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.3);
+  --ds-elev-3: 0 8px 28px rgb(0 0 0 / 0.5), 0 2px 6px rgb(0 0 0 / 0.3);
+  --ds-elev-4: 0 16px 44px rgb(0 0 0 / 0.55), 0 4px 10px rgb(0 0 0 / 0.35);
+}
+
+/* Follow the OS only until the user picks a theme explicitly. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+
+    --md-sys-color-background: #0e0e10;
+    --md-sys-color-on-background: #ececef;
+    --md-sys-color-surface: #0e0e10;
+    --md-sys-color-surface-dim: #0b0b0d;
+    --md-sys-color-surface-bright: #26262b;
+    --md-sys-color-surface-container-lowest: #09090b;
+    --md-sys-color-surface-container-low: #131316;
+    --md-sys-color-surface-container: #17171a;
+    --md-sys-color-surface-container-high: #1d1d21;
+    --md-sys-color-surface-container-highest: #232328;
+    --md-sys-color-on-surface: #ececef;
+    --md-sys-color-on-surface-variant: #a1a4ab;
+    --md-sys-color-surface-variant: #26272c;
+    --md-sys-color-surface-tint: #ececef;
+    --md-sys-color-outline: #6e717a;
+    --md-sys-color-outline-variant: #26272c;
+    --md-sys-color-primary: #ededf0;
+    --md-sys-color-on-primary: #111113;
+    --md-sys-color-primary-container: #26272c;
+    --md-sys-color-on-primary-container: #ededf0;
+    --md-sys-color-secondary: #c6c8ce;
+    --md-sys-color-on-secondary: #1b1d22;
+    --md-sys-color-secondary-container: #25262b;
+    --md-sys-color-on-secondary-container: #e3e3e7;
+    --md-sys-color-tertiary: #93a8ff;
+    --md-sys-color-on-tertiary: #0f1b57;
+    --md-sys-color-tertiary-container: #1f2750;
+    --md-sys-color-on-tertiary-container: #dce2ff;
+    --md-sys-color-error: #ff8f86;
+    --md-sys-color-on-error: #4a0b07;
+    --md-sys-color-error-container: #3d1512;
+    --md-sys-color-on-error-container: #ffdad6;
+    --ds-color-success: #62d392;
+    --ds-color-on-success: #06301a;
+    --ds-color-success-container: #12301f;
+    --ds-color-on-success-container: #c9f2da;
+    --ds-color-warning: #f0b35a;
+    --ds-color-on-warning: #3a2500;
+    --ds-color-warning-container: #3a2a0a;
+    --ds-color-on-warning-container: #fbe3b8;
+    --md-sys-color-inverse-surface: #ececef;
+    --md-sys-color-inverse-on-surface: #1c1c1f;
+    --md-sys-color-inverse-primary: #26272c;
+    --ds-toast-bg: var(--md-sys-color-surface-container-highest);
+    --ds-elev-1: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 1px rgb(0 0 0 / 0.3);
+    --ds-elev-2: 0 2px 8px rgb(0 0 0 / 0.45), 0 1px 2px rgb(0 0 0 / 0.3);
+    --ds-elev-3: 0 8px 28px rgb(0 0 0 / 0.5), 0 2px 6px rgb(0 0 0 / 0.3);
+    --ds-elev-4: 0 16px 44px rgb(0 0 0 / 0.55), 0 4px 10px rgb(0 0 0 / 0.35);
+  }
+}
+
+/* Reduced motion collapses durations; state changes stay, travel goes. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --md-sys-motion-duration-short1: 1ms;
+    --md-sys-motion-duration-short2: 1ms;
+    --md-sys-motion-duration-short3: 1ms;
+    --md-sys-motion-duration-short4: 1ms;
+    --md-sys-motion-duration-medium1: 1ms;
+    --md-sys-motion-duration-medium2: 1ms;
+    --md-sys-motion-duration-medium3: 1ms;
+    --md-sys-motion-duration-medium4: 1ms;
+    --md-sys-motion-duration-long1: 1ms;
+    --md-sys-motion-duration-long2: 1ms;
+  }
+}
