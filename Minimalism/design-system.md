@@ -47,6 +47,7 @@ Esquema quase monocromático. Tinta e superfícies neutras levemente frias; **um
 | `surface` = `background` | `#fbfbfc` | `#0e0e10` |
 | `on-surface` | `#111113` | `#ececef` |
 | `on-surface-variant` | `#595c63` | `#a1a4ab` |
+| `surface-dim` / `surface-bright` | `#e9e9ed` / `#fbfbfc` | `#0b0b0d` / `#26262b` |
 | `surface-container-lowest` | `#ffffff` | `#09090b` |
 | `surface-container-low` | `#f6f6f8` | `#131316` |
 | `surface-container` | `#f1f1f4` | `#17171a` |
@@ -57,6 +58,8 @@ Esquema quase monocromático. Tinta e superfícies neutras levemente frias; **um
 | `outline-variant` | `#e1e2e7` | `#26272c` |
 | `inverse-surface` / `inverse-on-surface` | `#1c1c1f` / `#f2f2f4` | `#ececef` / `#1c1c1f` |
 | `inverse-primary` | `#e6e6ea` | `#26272c` |
+| `surface-tint` | `#111113` | `#ececef` |
+| `scrim` / `shadow` | `#000000` | `#000000` |
 
 Token CSS: `--md-sys-color-<papel>`.
 
@@ -99,7 +102,7 @@ Texto ≥ 4.5:1; texto grande e componentes de UI ≥ 3:1. Pares críticos valid
 | body-small | 13px | 18px | 0 | 400 |
 | label-large | 14px | 20px | -0.003em | 500 |
 | label-medium | 12px | 16px | +0.004em | 500 |
-| label-small | 11px | 16px | +0.01em | 500 |
+| label-small | 12px | 16px | +0.01em | 500 |
 
 Token CSS: `--md-sys-typescale-<papel>-{font,size,line-height,tracking,weight}`.
 
@@ -115,12 +118,14 @@ Token CSS: `--md-sys-typescale-<papel>-{font,size,line-height,tracking,weight}`.
 | Token | Valor | Uso |
 |---|---|---|
 | `--md-sys-shape-corner-none` | 0 | Divisores, tabelas |
-| `-extra-small` | 4px | Tokens inline, tooltip |
-| `-small` | 8px | Campos de texto, chips, esqueleto |
-| `-medium` | 12px | Menu, banner, toast, linhas de lista |
-| `-large` | 16px | Cartões, stage, FAB, tabela |
-| `-extra-large` | 28px | Diálogo, bottom sheet, moldura de celular |
-| `-full` | 9999px | Botões, badges, avatares, paginação |
+| `-extra-small` | 8px | Tooltip, foco de botão de ícone |
+| `-small` | 12px | Chips, esqueleto, slots do OTP, itens do carrossel de grade |
+| `-medium` | 16px | Banner, toast, popover, linhas de lista, item de menu |
+| `-large` | 24px | Cartões, FAB, tabela, rail, drawer, lista, app bar |
+| `-extra-large` | 32px | Diálogo, bottom sheet, side sheet, moldura de celular, seletor de data, carrossel |
+| `-full` | 9999px | Botões, badges, avatares, paginação, busca, segmentado de tema |
+
+Exceções nomeadas: `--ds-field-radius` = 16px (campos de texto e select, preenchido e contornado); `--md-menu-container-shape` = 20px; `--md-checkbox-container-shape` = 6px. Grupo de botões: 20px nas pontas externas, 10px entre itens, 20px no item selecionado.
 
 ## 6. Elevação
 
@@ -149,9 +154,10 @@ Base 4px: `--ds-space-1…9` = 4, 8, 12, 16, 24, 32, 48, 64, 96.
 | Token | Valor | Uso |
 |---|---|---|
 | `--ds-ease-out` | `cubic-bezier(0.23, 1, 0.32, 1)` | Resposta a toque, hover, toggle (padrão da UI) |
-| `--md-sys-motion-easing-standard` | `(0.2, 0, 0, 1)` | Mudanças dentro da tela, acordeão |
+| `--md-sys-motion-easing-standard` | `(0.2, 0, 0, 1)` | Mudanças dentro da tela, acordeão (`-decelerate` `(0, 0, 0, 1)` e `-accelerate` `(0.3, 0, 1, 1)` também existem) |
 | `…-emphasized-decelerate` | `(0.05, 0.7, 0.1, 1)` | Entradas: sheet, diálogo |
 | `…-emphasized-accelerate` | `(0.3, 0, 0.8, 0.15)` | Saídas |
+| `--ds-ease-in-out` | `(0.77, 0, 0.175, 1)` | Movimento na tela de um ponto a outro (raro) |
 | `--ds-ease-drawer` | `(0.32, 0.72, 0, 1)` | Entrada de sheets e painéis laterais |
 | `linear` | | Apenas shimmer, progresso e preenchimento de segurar |
 
@@ -204,11 +210,12 @@ Cada item está na página com todos os estados.
 | Botão de ícone | 40px (ícone 20–24px) |
 | FAB | small 40, regular 56, large 96 |
 | Campo de texto | altura 56px; contorno 1px, 2px no foco |
-| Chip | altura 32px, raio 8px |
+| Chip | altura 32px, raio 12px |
 | Switch | trilha 52×32px |
-| Cartão | raio 16px, padding 16px |
-| Diálogo | largura máx. 560px, raio 28px |
-| Toast | raio 12px, padding 14×16px, elevação 3 |
+| Campo de texto | raio 16px (`--ds-field-radius`) |
+| Cartão | raio 24px, padding 16px |
+| Diálogo | largura máx. 560px, raio 32px |
+| Toast | raio 16px, padding 14×16px, elevação 3 |
 | Avatar | 28 / 40 / 56px |
 | Badge | altura 24px; contador 20px |
 | Esqueleto | linha 12px, título 20px, avatar 40px |
@@ -216,6 +223,7 @@ Cada item está na página com todos os estados.
 ### 9.2 Toasts (Sonner)
 
 - Posição padrão: inferior direita; `closeButton`, `gap: 10`, `visibleToasts: 4`.
+- Ícone de tipo na cor semântica do tema (não do inverso).
 - Superfície: segue o tema (`surface-container-lowest` no claro, `surface-container-highest` no escuro, token `--ds-toast-bg`), texto `on-surface`, contorno `outline-variant`; ícone de tipo na cor semântica do tema; botão de fechar sem fundo, dentro do toast, só no hover ou foco.
 - Tipos usados: padrão, `success`, `error`, `warning`, `info`, `loading`, `promise`, com `description`, com `action`/`cancel`, persistente (`duration: Infinity`), posição customizada, ícone customizado, atualização por `id`.
 - Erros que exigem decisão ficam persistentes e com ação. Mensagem diz o que houve e o que fazer.
@@ -300,12 +308,10 @@ components/
   doc.tsx            Section, Group, Stage, Spec, Token
   shell.tsx          navegação lateral, alternador de tema
   sections/          foundations, actions, inputs, navigation, containment,
-                     feedback, motion, quality, resilience
-styles/              tokens.css, base.css, components.css, docs.css
-PRODUCT.md           contexto de produto
+                     feedback, motion, quality, resilience, extras
+lib/                 color.ts (contraste), format.ts (formatação e Intl)
+styles/              tokens.css, base.css, components.css, extras.css, docs.css
 design-system.md     este documento
-AUDIT-REPORT.md      relatório da auditoria
-SKILLS-REVIEW.md     revisão com as skills de animação, performance, mobile e dados extremos
 ```
 
 ## 14. Como estender
